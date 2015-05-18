@@ -4,7 +4,7 @@ FaceCrawl is a CVaaS (Computer Vision as a Service) utility for scraping picture
 
   * [nodejs/iojs] (https://nodejs.org/download/)
   * [phantomjs] (http://phantomjs.org/)
-  * [OpenCV 2.4.9] (http://opencv.org/downloads.html)
+  * [OpenCV 2.4.9] (http://opencv.org/downloads.html) (Also works with OpenCV 3, see line 9 of face\_detect/face\_crawl.cpp)
 
 ## Installing
 

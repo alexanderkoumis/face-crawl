@@ -1,27 +1,31 @@
 #include <node.h>
+
+//// OpenCV 2
 #include <opencv2/core/core.hpp> // cvRound
 #include <opencv2/objdetect/objdetect.hpp>
 #include <opencv2/highgui/highgui.hpp> // imread
 #include <opencv2/imgproc/imgproc.hpp> // cvtColor
 
-using namespace v8;
+//// OpenCV 3 (To build w/ OpenCV 3, use following OpenCV includes instead)
+// #include <opencv2/core.hpp>
+// #include <opencv2/objdetect.hpp>
+// #include <opencv2/highgui.hpp>
+// #include <opencv2/imgproc.hpp>
 
 const static std::vector<int> imwriteargs = {cv::IMWRITE_JPEG_QUALITY, 95};
 static cv::CascadeClassifier face_cascade;
 static cv::CascadeClassifier eyes_cascade;
 
-
-
-void LoadCascades(const FunctionCallbackInfo<Value>& args) {
+void LoadCascades(const v8::FunctionCallbackInfo<v8::Value>& args) {
   v8::String::Utf8Value mod_path(args[0]->ToString());
   std::string mod_str = std::string(*mod_path);
   face_cascade.load(mod_str + "/face_detect/haarcascades/frontalface.xml");
   // eyes_cascade.load(mod_str + "/face_detect/haarcascades/eye.xml");
 }
 
-void FindFace(const FunctionCallbackInfo<Value>& args) {
-  Isolate* isolate = Isolate::GetCurrent();
-  HandleScope scope(isolate);
+void FindFace(const v8::FunctionCallbackInfo<v8::Value>& args) {
+  v8::Isolate* isolate = v8::Isolate::GetCurrent();
+  v8::HandleScope scope(isolate);
 
   v8::String::Utf8Value col_string(args[0]->ToString());
   std::string col_path = std::string(*col_string);
@@ -37,11 +41,8 @@ void FindFace(const FunctionCallbackInfo<Value>& args) {
   }
 
   if (img_c.channels() == 1) {
-    // v8::Local<v8::Value> val[arg] = v8::Integer::New(isolate, 0);
     v8::Local<v8::Value> argv[argc] = { v8::Integer::New(isolate, 0) };
     cb->Call(isolate->GetCurrentContext()->Global(), argc, argv);
-
-    // img_bw = img_c;
   }
   else {
     cv::cvtColor(img_c, img_bw, cv::COLOR_BGR2GRAY);
@@ -66,7 +67,6 @@ void FindFace(const FunctionCallbackInfo<Value>& args) {
     }
     cv::rectangle(img_c, pt_top_left, pt_bottom_right, cv::Scalar(0, 0, 255));
     // std::vector<cv::Rect> eyes;
-
 
     cv::Mat face_roi_bw = img_bw(face);
     // cv::Mat face_roi_c = img_c(face);
@@ -99,7 +99,7 @@ void FindFace(const FunctionCallbackInfo<Value>& args) {
   }
 }
 
-void Init(Handle<Object> exports, Handle<Object> module) {
+void Init(v8::Handle<v8::Object> exports, v8::Handle<v8::Object> module) {
   NODE_SET_METHOD(exports, "init", LoadCascades);
   NODE_SET_METHOD(exports, "findface", FindFace);
 }
