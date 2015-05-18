@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='utf-8'>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>FaceCrawl</title>
+        <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+        <style>
+            body{
+              margin: 0;
+            }
+            canvas{
+              position: absolute;
+              width: 100%;
+              height: 100%;
+              background: #111a22;
+            }
+        </style>
+    </head>
+    <body>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+        <div class="container">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="#">FaceCrawl</a>
+          </div>
+
+          <div id="navbar" class="navbar-collapse collapse">
+
+            <ul class="nav navbar-nav">
+
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Site to scrape<span class="caret"></span></a>
+                  <ul class="dropdown-menu" role="menu">
+                    <li>
+                      <a href="#">
+                        <form>
+                          <input type="url" name="site" value="flickr.com">
+                          <input type="button" value="Go" onClick="scrapeSite(this.form)">
+                        </form>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+
+              <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Display mode<span class="caret"></span></a>
+                  <ul class="dropdown-menu" role="menu">
+                    <li>
+                      <a href="#" role="button" onClick='changeMode(DisplayMode.WALL)'>Wall</a>
+                      <a href="#" role="button" onClick='changeMode(DisplayMode.BURST)'>Burst</a>
+                    </li>
+                  </ul>
+                </li>
+
+            </ul>
+
+          </div>
+
+
+        </div>
+
+        <canvas id='init_canvas'></canvas>
+
+        <script src='/socket.io/socket.io.js'></script>
+        <script src='./js/polyfill.js'></script>
+        <script src='./js/faces.js'></script>
+    </body>
+</html>

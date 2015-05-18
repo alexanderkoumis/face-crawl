@@ -1,0 +1,22 @@
+{
+  "name": "facecrawl",
+  "version": "1.0.0",
+  "description": "scrape some faces",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": ".git"
+  },
+  "author": "Alexander Koumis",
+  "license": "ISC",
+  "dependencies": {
+    "bower": "^1.3.12",
+    "express": "^4.11.2",
+    "phantom": "^0.7.2",
+    "request": "^2.53.0",
+    "socket.io": "^1.3.3"
+  }
+}
