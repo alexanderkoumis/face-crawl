@@ -4,7 +4,7 @@ FaceCrawl is a CVaaS (Computer Vision as a Service) utility for scraping picture
 
 Video demo:
 
-<a href="http://www.youtube.com/watch?feature=player_embedded&v=YOUTUBE_VIDEO_ID_HERE
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=sMge1GxvCYk
 " target="_blank"><img src="http://img.youtube.com/vi/sMge1GxvCYk/0.jpg" 
 alt="FaceCrawl" width="240" height="180" border="10" /></a>
 
