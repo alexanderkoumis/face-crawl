@@ -1,0 +1,21 @@
+{
+  "name": "face-crawl",
+  "version": "0.0.0",
+  "homepage": "https://github.com/alexanderkoumis/face-crawl",
+  "authors": [
+    "Alexander Koumis <me@alexander.computer>"
+  ],
+  "description": "Face crawler",
+  "main": "index.html",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.4"
+  }
+}

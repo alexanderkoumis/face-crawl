@@ -28,10 +28,6 @@ io.on('connection', function(socket) {
     });
 });
 
-saveAndSend = function(socket, url, body, ext) {
-
-}
-
 scrapeIt = function(socket, site) {
     phantom.create(function (ph) {
         ph.createPage(function (page) {

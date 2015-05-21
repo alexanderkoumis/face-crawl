@@ -12,18 +12,20 @@ alt="FaceCrawl" width="240" height="180" border="10" /></a>
 
   * [nodejs/iojs] (https://nodejs.org/download/)
   * [phantomjs] (http://phantomjs.org/)
-  * [OpenCV 2.4.9] (http://opencv.org/downloads.html) (Also works with OpenCV 3, see line 9 of face\_detect/face\_crawl.cpp)
+  * [OpenCV 3] (http://opencv.org/downloads.html)
 
 ## Installing
 
 _Note_: Windows should work but is not officially supported
 
-Installing project-specific Node modules:
+Installing project modules:
 
 ```bash
 git clone https://github.com/alexanderkoumis/face-crawl
 cd face-crawl
 npm install
+cd public
+bower install
 ```
 
 Building face-detection C++ Node addon:
@@ -43,4 +45,4 @@ Starting the server:
 node index.js
 ```
 
-The FaceCrawl front-end client should now be running on your localhost. Try it out by navigating to `localhost:3000` with your web browser.
+The FaceCrawl front-end client should now be running on your localhost. Try it out by navigating to localhost:3000`with your web browser.
