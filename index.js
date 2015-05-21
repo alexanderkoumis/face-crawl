@@ -10,7 +10,7 @@ var io = require('socket.io')(server);
 var face_detect = require('./face_detect/build/Release/face_crawl');
 face_detect.init(__dirname);
 
-server.listen(5001, function() {
+server.listen(3000, function() {
     console.log("Started server on port 3000");
 })
 
