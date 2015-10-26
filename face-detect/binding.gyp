@@ -1,10 +1,10 @@
 {
   'targets': [
     {
-      'target_name': 'face_crawl',
+      'target_name': 'face-detect',
       'include_dirs': [ '<!@(pkg-config --cflags opencv)' ],
       'sources': [
-        'face_crawl.cpp',
+        'face-detect.cpp',
         ],
       'cflags':[ '-std=gnu++11' ],
       'libraries': [

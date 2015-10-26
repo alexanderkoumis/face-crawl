@@ -38,8 +38,10 @@ init = function () {
     }
     window.onresize();
 
-    socket.on('face', function(face) {
-        newFace(faces, face);
+    socket.on('face', function(facesObj) {
+        facesObj.rects.forEach(function (rect) {
+            newFace(faces, facesObj.url, rect);
+        });
         requestAnimationFrame(loop);
     });
 
@@ -76,14 +78,14 @@ loop = function() {
     requestAnimationFrame(loop);
 }
 
-newFace = function(faces, face) {
+newFace = function(faces, url, rect) {
     type = type ? 0 : 1; // 50% true / 50% false
     var img = new Image();
     img.onload = function() {
         faces.push({
-            rect: face.rect,
-            w: face.rect[2] - face.rect[0],
-            h: face.rect[3] - face.rect[1],
+            rect: rect,
+            w: rect[2] - rect[0],
+            h: rect[3] - rect[1],
             pic: img,
             x: canvas.width/2,
             y: canvas.height/2,
@@ -91,7 +93,7 @@ newFace = function(faces, face) {
             yv: type ? 18 * Math.random() - 9 : 24 * Math.random() - 12
         });
     }
-    img.src = face.url;
+    img.src = url;
 }
 
 drawBurst = function() {
@@ -161,9 +163,6 @@ String.prototype.startsWith = function(sub_str) {
 function scrapeSite(form) {
     site_str = form.site.value;
     console.log('you entered: ' + site_str);
-    if (!site_str.startsWith('http://')) {
-        site_str = 'http://' + site_str;
-    }
     socket.emit('scrape_site', site_str);
 }
 

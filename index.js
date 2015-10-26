@@ -7,7 +7,7 @@ var app = express();
 var server = require('http').createServer(app);
 var io = require('socket.io')(server);
 
-var face_detect = require('./face_detect/build/Release/face_crawl');
+var face_detect = require('./face-detect/build/Release/face-detect');
 face_detect.init(__dirname);
 
 server.listen(3000, function() {
@@ -42,11 +42,21 @@ scrapeIt = function(socket, site) {
                                 function (err, response, body)  {
                             if (!err && response.headers['content-length'] > 10000) {
                                 var col_name = collected_prefix + img_cnt++ + "." + ext;
-                                console.log("Wrote file: " + col_name);
                                 fs.writeFile(col_name, body, 'binary', function() {
                                     face_detect.findface(col_name, function(rect) {
-                                        var face = {'url': url, 'rect': rect};
-                                        socket.emit('face', face);
+                                        var faceRects = []
+                                        for (var i = 0; i < (rect.length / 4); ++i) {
+                                            faceRects.push([
+                                                rect[ i * 4 + 0 ],
+                                                rect[ i * 4 + 1 ],
+                                                rect[ i * 4 + 2 ],
+                                                rect[ i * 4 + 3 ] 
+                                            ]);
+                                        }
+                                        socket.emit('face', {
+                                            'url': url,
+                                            'rects': faceRects
+                                        });
                                     });
                                 });
                             }

@@ -4,7 +4,9 @@
   "description": "scrape some faces",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "install": "./install.sh",
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",

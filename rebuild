@@ -1,1 +1,0 @@
-cd ./face_detect; node-gyp rebuild; cd ..
