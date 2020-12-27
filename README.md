@@ -1,6 +1,6 @@
 # FaceCrawl
 
-FaceCrawl is a CVaaS (Computer Vision as a Service) utility for scraping pictures from arbitrary sites on the net.
+FaceCrawl is a utility for scraping pictures from arbitrary sites on the net.
 
 Video demo:
 
